@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>REGISTER</title>
+</head>
+
+<body style="background-image: url({% static 'img/img_14.png '%}); display: flex;justify-content :left; align-items:center; height: 95vh; margin-left: 40px">
+
+<style>
+
+
+
+    .mycontainer{
+
+        background-color:dimgray;
+        border-radius: 55px;
+        height: 400px;
+        width: 300px;
+        display: flex;
+        justify-content:right;
+        align-items:center;
+        flex-direction: column;
+
+
+
+    }
+    .mycontainer input{
+        width:250px;
+        height: 50px;
+        padding:1rem;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        cursor:pointer;
+
+
+    }
+    h3 {
+        margin-bottom: 50px;
+        margin-left: 40px;
+    }
+    .gold{
+        width:20%;
+       padding: 2.5%;
+        color:#fff;
+       display: flex;
+        justify-content:left;
+        align-items:center;
+        flex-direction: column;
+        margin-left: 840px;
+
+
+    }
+
+</style>
+<div class="mycontainer">
+
+
+<form action="" method="post" id="form" enctype="multipart/form-data">
+    <h3>Регистрация</h3>
+    <input name="email" placeholder="Введите Email"><br>
+     <input name="password"  placeholder="Введите пароль" id="tel"><br>
+     <input class="form-control" placeholder="Введите повтор пароля" ><br>
+    <button id="send" class="btn btn-secondary btn-lg" > "Зарегистрироваться"</button>
+
+</form>
+    </div>
+<div class="gold">
+    <h1><b><i><br>Мы умеем</i></b></h1><br>
+    <h1><i>- стрижка</i></h1><br>
+    <h1><i>- бритье и оформление бороды,усов</i></h1><br>
+    <h1><i>- комуфляж бороды, усов</i></h1><br>
+    <h1><i>- уход за бровями</i></h1><br>
+
+
+
+</div>
+
+<script>
+    let inputs = document.getElementsByTagName('input')
+
+
+
+    form.onsubmit = (e) => {
+         if (inputs[0].value.replaceAll(' ', '') === '' || inputs[1].value.replaceAll(' ', '') === '') {
+                e.preventDefault()
+                alert('Есть пустые поля!')
+                return
+        }
+
+        if (!inputs[0].value.match(/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i)){
+             e.preventDefault()
+            alert('Не коректно введен email ')
+            return
+        }
+
+
+        if (inputs[1].value.length <=7){
+            e.preventDefault()
+            alert('Пароль должен содержать не меньше 8 символов')
+            return
+        }
+
+        if (!inputs[1].value.match(/[A-Za-zA-Яа-яЁё]/g)) {
+                e.preventDefault()
+                alert('Пароль должен содержать и цифры и буквы ')
+                return
+        }
+        if (!inputs[1].value.match(/(?=.*[0-9])/g)) {
+                e.preventDefault()
+                alert('Пароль должен содержать и цифры и буквы')
+                return
+        }
+
+        else if (inputs[1].value === inputs[2].value) {
+           confirm('Регистрация прошла успешно,подтвердить ?')
+
+        }
+
+        else {
+            e.preventDefault()
+            alert ('Пароли не совпадают!')
+        }
+    }
+</script>
+</body>
+</html>
